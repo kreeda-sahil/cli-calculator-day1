@@ -37,19 +37,19 @@ def show_history() -> None:
 
 
 
-def run_once(args: list[str]) -> None:
+def run_once(cmd_operation: list[str]) -> None:
 
-    if len(args) != 3:
+    if len(cmd_operation) != 3:
         print("Usage: python calculator.py <number> <operator> <number>")
         print("Example: python calculator.py 10 / 3")
         sys.exit(1)
 
     try:
-        a = validate_number(args[0])
-        op = validate_operation(args[1])
-        b = validate_number(args[2])
+        a = validate_number(cmd_operation[0])
+        op = validate_operation(cmd_operation[1])
+        b = validate_number(cmd_operation[2])
         result = calculate(a, op, b)
-        print(f"{format_result(a)} {op} {format_result(b)} = {format_result(result)}")
+        print(f" {format_result(a)} {op} {format_result(b)} = {format_result(result)}")
     except CalculatorError as exc:
         print(f"Error: {exc}")
         sys.exit(1)
