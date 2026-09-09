@@ -98,33 +98,33 @@ def cli_operation() -> None:
         try:
             a = validate_number(raw_a)
         except InvalidInputError as exc:
-            print(f"  ⚠  {exc}\n")
+            print(f" {exc}\n")
             continue
 
         raw_op = prompt(f"Enter operation ({', '.join(sorted(SUPPORTED_OPERATIONS))})")
         try:
             op = validate_operation(raw_op)
         except CalculatorError as exc:
-            print(f"  ⚠  {exc}\n")
+            print(f" {exc}\n")
             continue
 
         raw_b = prompt("Enter second number")
         try:
             b = validate_number(raw_b)
         except InvalidInputError as exc:
-            print(f"  ⚠  {exc}\n")
+            print(f" {exc}\n")
             continue
 
 
         try:
             result = calculate(a, op, b)
         except CalculatorError as exc:
-            print(f"  ⚠  {exc}\n")
+            print(f" {exc}\n")
             continue
 
         expr = f"{format_result(a)} {op} {format_result(b)} = {format_result(result)}"
         history.append(expr)
-        print(f"\n  ✅ {expr}\n")
+        print(f"\n {expr}\n")
 
 
 
